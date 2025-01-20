@@ -1,0 +1,11 @@
+<h2>Basket</h2>
+<div *ngIf="productsInBasket.length > 0; else emptyBasket">
+  <ul>
+    <li *ngFor="let product of productsInBasket">
+      {{ product.title }} - {{ product.price | currency }}
+    </li>
+  </ul>
+</div>
+<ng-template #emptyBasket>
+  <p>Your basket is empty.</p>
+</ng-template>

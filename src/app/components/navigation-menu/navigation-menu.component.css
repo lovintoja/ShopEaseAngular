@@ -1,0 +1,52 @@
+/* General Styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 16px;
+    color: lightblue;
+  }
+  
+  .navbar-logo {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: black;
+  }
+  
+  .navbar-logo mat-icon {
+    margin-right: 8px;
+  }
+  
+  .navbar-links {
+    display: flex;
+    gap: 16px;
+  }
+  
+  .basket-link {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+  }
+  
+  .basket-link mat-icon {
+    margin-left: 4px;
+  }
+  
+  /* Spacer to push links to the right */
+  .spacer {
+    flex: 1;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .navbar-links {
+      display: none; /* Hide desktop links on mobile */
+    }
+  
+    .menu-button {
+      display: block;
+    }
+  }
+  
