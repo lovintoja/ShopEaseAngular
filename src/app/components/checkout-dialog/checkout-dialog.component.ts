@@ -47,6 +47,9 @@ export class CheckoutDialogComponent {
       this.basketService.clearBasket(); // Clear the basket
       this.dialogRef.close(); // Close the modal
       this.router.navigate(['/']); // Redirect to landing page
+    } 
+    else {
+      alert('Invalid form! Check email format!')
     }
   }
 }
