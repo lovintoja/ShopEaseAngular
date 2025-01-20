@@ -1,0 +1,41 @@
+<div class="landing-page">
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-content">
+        <h1>Welcome to ShopEase</h1>
+        <p>Your one-stop shop for all your needs. Discover amazing products at unbeatable prices.</p>
+        <button mat-raised-button color="primary" routerLink="/products">Shop Now</button>
+      </div>
+    </section>
+  
+    <!-- Features Section -->
+    <section class="features-section">
+      <mat-grid-list cols="3" rowHeight="1:1" gutterSize="16px" class="features-grid">
+        <mat-grid-tile *ngFor="let feature of features">
+          <div class="feature-card">
+            <img [src]="feature.image" alt="{{ feature.title }}" />
+            <h3>{{ feature.title }}</h3>
+            <p>{{ feature.description }}</p>
+          </div>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </section>
+  
+    <!-- Customer Service Section -->
+    <section class="customer-service-section">
+      <div class="service-content">
+        <h2>Exceptional Customer Service</h2>
+        <p>
+          Our team is dedicated to providing you with the best shopping experience. If you have
+          any questions or need assistance, we're here to help.
+        </p>
+        <button mat-button color="accent" routerLink="/about">About Us</button>
+      </div>
+    </section>
+  
+    <!-- Footer -->
+    <footer class="footer">
+      <p>&copy; {{ currentYear }} ShopEase. All rights reserved.</p>
+    </footer>
+  </div>
+  

@@ -1,0 +1,29 @@
+<h2 mat-dialog-title>Checkout</h2>
+<mat-dialog-content>
+  <form [formGroup]="checkoutForm">
+    <mat-form-field appearance="fill">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" placeholder="Enter your name" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Address</mat-label>
+      <input matInput formControlName="address" placeholder="Enter your address" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" placeholder="Enter your email" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Phone</mat-label>
+      <input matInput formControlName="phone" placeholder="Enter your phone number" />
+    </mat-form-field>
+
+    <div mat-dialog-actions>
+        <button mat-button mat-dialog-close>Cancel</button>
+        <button mat-raised-button color="primary" (click)="submitOrder()">Submit</button>
+    </div>
+  </form>
+</mat-dialog-content>

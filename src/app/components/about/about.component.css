@@ -1,0 +1,77 @@
+.about-page {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+  }
+  
+  .about-header {
+    background-color: #ffffff;
+    text-align: center;
+  }
+  
+  .about-header mat-card-title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+  
+  .about-section {
+    display: grid;
+    gap: 2rem;
+  }
+  
+  mat-card {
+    padding: 1.5rem;
+    border-radius: 8px;
+  }
+
+  mat-card-title {
+    padding: 1rem;
+  }
+  
+  .team {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+  }
+  
+  .team-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+    background-color: #f9f9f9;
+    border-radius: 12px;
+  }
+  
+  .team-member {
+    text-align: center;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    overflow: hidden; /* Ensure any excess content doesn't overflow */
+  }
+  
+  .team-member img {
+    width: 150px; /* Fixed width */
+    height: 150px; /* Fixed height */
+    object-fit: cover; /* Crop the image to fit without distortion */
+    border-radius: 50%; /* Make the image circular */
+    margin-bottom: 1rem;
+  }
+  
+  .team-member h3 {
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+    color: #333;
+  }
+  
+  .team-member p {
+    font-size: 1rem;
+    color: #555;
+  }
