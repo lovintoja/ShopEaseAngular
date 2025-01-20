@@ -4,6 +4,7 @@ import { ProductService } from '../../services/product.service';
 import { Product } from '../../models/product.model';
 import { MatCardModule } from '@angular/material/card';
 import { CommonModule, CurrencyPipe } from '@angular/common';
+import { BasketService } from '../../services/basket.service';
 
 @Component({
   selector: 'app-product-details',
@@ -14,7 +15,7 @@ import { CommonModule, CurrencyPipe } from '@angular/common';
 export class ProductDetailsComponent implements OnInit {
   product!: Product;
 
-  constructor(private route: ActivatedRoute, private productService: ProductService) {}
+  constructor(private route: ActivatedRoute, private productService: ProductService, private basketService: BasketService) {}
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
@@ -27,5 +28,6 @@ export class ProductDetailsComponent implements OnInit {
 
   addToBasket(): void {
     alert(`${this.product.title} has been added to the basket!`);
+    this.basketService.addToBasket(this.product);
   }
 }

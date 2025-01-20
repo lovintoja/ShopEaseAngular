@@ -1,11 +1,10 @@
 <div class="product-list">
   <mat-card *ngFor="let product of products" class="product-card">
-    <img mat-card-image [src]="product.image" alt="{{ product.title }}">
+    <img mat-card-image [src]="product.image" alt="{{ product.title }}" />
     <mat-card-title>{{ product.title }}</mat-card-title>
     <mat-card-subtitle>{{ product.price | currency }}</mat-card-subtitle>
     <button mat-button color="primary" [routerLink]="['/product-details', product.id]">
-      Details
+      View Details
     </button>
   </mat-card>
 </div>
-  

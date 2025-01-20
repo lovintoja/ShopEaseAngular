@@ -6,11 +6,11 @@ import { Product } from '../models/product.model';
   providedIn: 'root',
 })
 export class BasketService {
-  private basket: Product[] = [];
-  private basketSubject: BehaviorSubject<Product[]> = new BehaviorSubject<Product[]>(this.basket);
+  private basket: { product: Product; quantity: number }[] = [];
+  private basketSubject: BehaviorSubject<{ product: Product; quantity: number }[]> = 
+    new BehaviorSubject<{ product: Product; quantity: number }[]>(this.basket);
 
-  // Observable for components to subscribe
-  basket$: Observable<Product[]> = this.basketSubject.asObservable();
+  basket$: Observable<{ product: Product; quantity: number }[]> = this.basketSubject.asObservable();
 
   constructor() {
     const storedBasket = localStorage.getItem('basket');
@@ -19,31 +19,53 @@ export class BasketService {
       this.basketSubject.next([...this.basket]);
     }
   }
-  
+
   private updateLocalStorage(): void {
     localStorage.setItem('basket', JSON.stringify(this.basket));
   }
-  
-  addToBasket(product: Product): void {
-    this.basket.push(product);
+
+  addToBasket(product: Product, quantity: number = 1): void {
+    const existingProduct = this.basket.find((item) => item.product.id === product.id);
+
+    if (existingProduct) {
+      existingProduct.quantity += quantity;
+    } else {
+      this.basket.push({ product, quantity });
+    }
+
     this.updateLocalStorage();
     this.basketSubject.next([...this.basket]);
   }
-  
-  removeFromBasket(productId: number): void {
-    this.basket = this.basket.filter((p) => p.id !== productId);
+
+  removeFromBasket(productId: number, quantity: number = 1): void {
+    const existingProduct = this.basket.find((item) => item.product.id === productId);
+
+    if (existingProduct) {
+      if (existingProduct.quantity > quantity) {
+        existingProduct.quantity -= quantity;
+      } else {
+        this.basket = this.basket.filter((item) => item.product.id !== productId);
+      }
+    }
+
     this.updateLocalStorage();
     this.basketSubject.next([...this.basket]);
   }
-  
+
   clearBasket(): void {
     this.basket = [];
     localStorage.removeItem('basket');
     this.basketSubject.next([...this.basket]);
   }
-  
 
-  getBasket(): Observable<Product[]> {
+  getBasket(): Observable<{ product: Product; quantity: number }[]> {
     return this.basket$;
+  }
+
+  getTotal(): number {
+    return this.basket.reduce(
+      (total, item) => total + item.product.price * item.quantity,
+      0
+    );
   }
 }

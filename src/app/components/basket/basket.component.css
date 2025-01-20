@@ -1,35 +1,53 @@
-.basket {
-    margin-top: 1rem;
-    background-color: white;
+.basket-container {
+    margin-top: 2rem;
     padding: 1rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
   
-  .basket table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  .basket th, .basket td {
-    padding: 0.5rem;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  .basket th {
-    background-color: #6200ea;
-    color: white;
-  }
-  
-  .basket td img {
-    max-width: 50px;
-    height: auto;
-  }
-  
-  .basket .total {
-    text-align: right;
+  .basket-title {
+    margin: 2%;
+    font-size: 2rem;
     font-weight: bold;
-    margin-top: 1rem;
+    margin-bottom: 1rem;
+    color: #333;
+  }
+  
+  table {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+  
+  .mat-header-cell {
+    font-weight: bold;
+    text-transform: uppercase;
+    color: white;
+    background-color: #6200ea;
+  }
+  
+  .mat-cell {
+    color: #555;
+  }
+  
+  .product-image {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 4px;
+  }
+  
+  .total {
+    text-align: right;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .empty-message {
+    text-align: center;
+    color: #888;
+    font-size: 1.1rem;
+    margin-top: 2rem;
   }
   

@@ -1,0 +1,56 @@
+<div class="about-page mat-elevation-z8">
+    <mat-card class="about-header">
+      <mat-card-title>About ShopEase</mat-card-title>
+      <mat-card-content>
+        <p>
+          Welcome to <strong>ShopEase</strong>, your one-stop destination for seamless and delightful shopping. 
+          We aim to provide a wide variety of products, tailored to meet your everyday needs with the utmost convenience.
+        </p>
+      </mat-card-content>
+    </mat-card>
+  
+    <div class="about-section">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Our Mission</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p>
+            At ShopEase, we strive to offer the best online shopping experience. 
+            Our mission is to connect customers with high-quality products, affordable prices, 
+            and exceptional service.
+          </p>
+        </mat-card-content>
+      </mat-card>
+  
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Our Values</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <ul>
+            <li>Customer Satisfaction</li>
+            <li>High-Quality Products</li>
+            <li>Innovation and Sustainability</li>
+            <li>Community Support</li>
+          </ul>
+        </mat-card-content>
+      </mat-card>
+  
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Meet the Team</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="team">
+            <div class="team-member" *ngFor="let member of team">
+              <img [src]="member.image" [alt]="member.name" />
+              <h3>{{ member.name }}</h3>
+              <p>{{ member.role }}</p>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+  

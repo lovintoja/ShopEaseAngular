@@ -1,51 +1,98 @@
-/* Grid layout for products */
+/* Product List Grid Layout */
 .product-list {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
-    margin-top: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+    padding: 0 16px;
   }
   
   .product-card {
-    display: grid;
-    grid-template-rows: 1fr auto; /* Content takes available space, button takes minimal */
-    gap: 10px; /* Space between content and button */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     padding: 1rem;
     text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .product-card:hover {
+    transform: translateY(-5px); /* Slight lift effect on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Deeper shadow */
   }
   
   .product-card img {
     max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
-    align-self: center;
-    justify-self: center;
+    height: 200px; /* Fixed height for uniformity */
+    object-fit: contain; /* Ensure aspect ratio is maintained */
+    border-radius: 8px;
+    margin-bottom: 1rem;
   }
   
   .product-card h3 {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
+    font-weight: bold;
     margin: 0.5rem 0;
+  }
+  
+  .product-card p {
+    color: #666;
+    font-size: 1rem;
   }
   
   .product-card button {
     background-color: #6200ea;
     color: white;
     border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
+    padding: 0.75rem 1.25rem;
+    border-radius: 8px;
     cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.3s ease;
   }
   
   .product-card button:hover {
     background-color: #3700b3;
+    transform: translateY(-3px); /* Slight button lift effect */
   }
   
-  @media (max-width: 600px) {
+  .product-card button:focus {
+    outline: none;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .product-list {
+      padding: 0 8px; /* Less padding on small screens */
+    }
+    
     .product-card img {
-      height: 100px;
+      height: 150px; /* Smaller image size for mobile */
+    }
+    
+    .product-card h3 {
+      font-size: 1.1rem;
+    }
+    
+    .product-card button {
+      padding: 0.5rem 1rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .product-card {
+      padding: 0.75rem;
+    }
+  
+    .product-card img {
+      height: 120px;
+    }
+  
+    .product-card h3 {
+      font-size: 1rem;
     }
   }
   
