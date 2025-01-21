@@ -3,10 +3,10 @@ import { ProductListComponent } from './components/product-list/product-list.com
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { BasketComponent } from './components/basket/basket.component';
 import { AboutComponent } from './components/about/about.component';
-import { IndexComponent } from './components/landing-page/index.component';
+import { LandingPageComponent } from './components/landing-page/landing-page.component';
 
 export const appRoutes: Routes = [
-  { path: 'landingpage', component: IndexComponent },
+  { path: '', component: LandingPageComponent },
   { path: 'products', component: ProductListComponent },
   { path: 'product-details/:id', component: ProductDetailsComponent },
   { path: 'basket', component: BasketComponent },

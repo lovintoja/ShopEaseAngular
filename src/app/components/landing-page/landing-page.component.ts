@@ -6,12 +6,12 @@ import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'app-index',
-  templateUrl: './index.component.html',
+  selector: 'app-landing-page',
+  templateUrl: './landing-page.component.html',
   imports: [MatToolbarModule, MatButtonModule, MatGridListModule, CommonModule, RouterLink],
-  styleUrls: ['./index.component.css'],
+  styleUrls: ['./landing-page.component.css'],
 })
-export class IndexComponent {
+export class LandingPageComponent {
   currentYear = new Date().getFullYear();
 
   features = [
