@@ -1,16 +1,18 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogContent, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { BasketService } from '../../services/basket.service';
 import { Router } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { animate, style, transition, trigger } from '@angular/animations';
+import { MatButton } from '@angular/material/button';
 
 @Component({
   selector: 'app-checkout-dialog',
   templateUrl: './checkout-dialog.component.html',
-  imports: [MatDialogModule, MatFormFieldModule, MatDialogContent, ReactiveFormsModule],
+  imports: [MatDialogModule, MatFormFieldModule, MatDialogContent, ReactiveFormsModule, MatButton, MatInputModule],
   styleUrls: ['./checkout-dialog.component.css'],
   animations: [
     trigger('dialogAnimation', [

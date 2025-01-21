@@ -2,8 +2,8 @@ import { Routes } from '@angular/router';
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { BasketComponent } from './components/basket/basket.component';
-import { IndexComponent } from './components/index/index.component';
 import { AboutComponent } from './components/about/about.component';
+import { IndexComponent } from './components/landing-page/index.component';
 
 export const appRoutes: Routes = [
   { path: 'landingpage', component: IndexComponent },
