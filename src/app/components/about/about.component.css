@@ -54,14 +54,14 @@
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 1rem;
-    overflow: hidden; /* Ensure any excess content doesn't overflow */
+    overflow: hidden;
   }
   
   .team-member img {
-    width: 150px; /* Fixed width */
-    height: 150px; /* Fixed height */
-    object-fit: cover; /* Crop the image to fit without distortion */
-    border-radius: 50%; /* Make the image circular */
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
     margin-bottom: 1rem;
   }
   

@@ -1,4 +1,3 @@
-/* General Styles */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -37,15 +36,13 @@
     margin-left: 4px;
   }
   
-  /* Spacer to push links to the right */
   .spacer {
     flex: 1;
   }
   
-  /* Responsive Design */
   @media (max-width: 768px) {
     .navbar-links {
-      display: none; /* Hide desktop links on mobile */
+      display: none;
     }
   
     .menu-button {

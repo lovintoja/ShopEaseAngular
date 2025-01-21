@@ -46,9 +46,9 @@ export class CheckoutDialogComponent {
   submitOrder() {
     if (this.checkoutForm.valid) {
       alert('Order completed successfully!');
-      this.basketService.clearBasket(); // Clear the basket
-      this.dialogRef.close(); // Close the modal
-      this.router.navigate(['/']); // Redirect to landing page
+      this.basketService.clearBasket();
+      this.dialogRef.close();
+      this.router.navigate(['/']);
     } 
     else {
       alert('Invalid form! Check email format!')
