@@ -18,3 +18,9 @@ Application has 4 main pages: landing page, product list, about us page and bask
 connectivity with 3rd party API that provides names, IDs, prices and pictures for products in the shop. Basket
 provides possibility to persist items locally, remove or add items of same or different kind. We can checkout 
 by filling the form that has animation on pop-up. For now, checkout results only in alert and redirect to home page.
+
+For PWA capability, serve application in production mode via:
+
+```bash
+ng serve --configuration production
+```
