@@ -4,14 +4,15 @@ import { Product } from '../../models/product.model';
 import { BasketService } from '../../services/basket.service';
 import { CommonModule, CurrencyPipe } from '@angular/common';
 import { MatIcon } from '@angular/material/icon';
-import { MatTableModule } from '@angular/material/table';
+import { MatHeaderCell, MatTableModule } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { CheckoutDialogComponent } from '../checkout-dialog/checkout-dialog.component';
+import { MatButton } from '@angular/material/button';
 
 @Component({
   selector: 'app-basket',
   templateUrl: './basket.component.html',
-  imports: [CurrencyPipe, MatIcon, CommonModule, MatTableModule],
+  imports: [CurrencyPipe, MatIcon, CommonModule, MatTableModule, MatButton, MatIcon, MatHeaderCell],
   styleUrls: ['./basket.component.css']
 })
 export class BasketComponent implements OnInit {

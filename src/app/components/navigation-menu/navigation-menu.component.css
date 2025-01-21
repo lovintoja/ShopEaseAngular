@@ -4,7 +4,11 @@
     justify-content: space-between;
     align-items: center;
     padding: 0 16px;
-    color: lightblue;
+    background-color: #1976D2;
+  }
+
+  .navbar a {
+    color: white;
   }
   
   .navbar-logo {

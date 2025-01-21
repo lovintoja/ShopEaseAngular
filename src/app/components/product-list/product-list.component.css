@@ -44,7 +44,7 @@
   }
   
   .product-card button {
-    background-color: #6200ea;
+    background-color: #1976D2;
     color: white;
     border: none;
     padding: 0.75rem 1.25rem;
@@ -55,7 +55,7 @@
   }
   
   .product-card button:hover {
-    background-color: #3700b3;
+    background-color: #2196F3;
     transform: translateY(-3px); /* Slight button lift effect */
   }
   
