@@ -1,17 +1,21 @@
-<mat-toolbar color="primary" class="navbar">
-  <a class="navbar-logo" routerLink="/">
-    <mat-icon>shopping_cart</mat-icon>
-    ShopEase
-  </a>
-
-  <span class="spacer"></span>
-  <nav class="navbar-links">
-    <a mat-button routerLink="/">Home</a>
-    <a mat-button routerLink="/products">Products</a>
-    <a mat-button routerLink="/about">About us</a>
-    <a mat-button routerLink="/basket" class="basket-link">
-      Basket <mat-icon>shopping_basket</mat-icon>
+<nav class="navbar">
+  <div class="navbar-container">
+    <a class="navbar-brand" routerLink="/">
+      <mat-icon>shopping_cart</mat-icon>
+      Shoe Grab
     </a>
-  </nav>
 
-
+    <div class="navbar-links">
+      <a class="nav-link" routerLink="/">Home</a>
+      <a class="nav-link" routerLink="/products">Products</a>
+      <a class="nav-link" routerLink="/about">About Us</a>
+      <a *ngIf="isLoggedIn" class="nav-link" routerLink="/profile">Profile</a>
+      <a *ngIf="!isLoggedIn" class="nav-link" routerLink="/login">Login</a>
+      <a *ngIf="isLoggedIn" class="nav-link" (click)="onLogout()">Logout</a>
+      <a class="nav-link basket-link" routerLink="/basket">
+        <mat-icon>shopping_basket</mat-icon>
+        <span class="basket-count">{{basketItemsAmount}}</span> <!-- Replace with dynamic count -->
+      </a>
+    </div>
+  </div>
+</nav>

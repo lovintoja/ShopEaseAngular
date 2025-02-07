@@ -2,13 +2,14 @@ import { Component } from '@angular/core';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatIcon } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-landing-page',
   templateUrl: './landing-page.component.html',
-  imports: [MatToolbarModule, MatButtonModule, MatGridListModule, CommonModule, RouterLink],
+  imports: [MatIcon, MatToolbarModule, MatButtonModule, MatGridListModule, CommonModule, RouterLink],
   styleUrls: ['./landing-page.component.css'],
 })
 export class LandingPageComponent {

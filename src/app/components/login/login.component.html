@@ -1,0 +1,33 @@
+<div class="login-container">
+    <div class="login-card">
+      <h2 class="login-title">Login</h2>
+      <p class="login-subtext">Welcome back! Please sign in to continue.</p>
+  
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" type="email" required />
+          <mat-icon matPrefix>mail</mat-icon>
+        </mat-form-field>
+  
+        <mat-form-field appearance="outline">
+          <mat-label>Password</mat-label>
+          <input matInput formControlName="password" type="password" required />
+          <mat-icon matPrefix>lock</mat-icon>
+        </mat-form-field>
+  
+        <div *ngIf="errorMessage" class="error-message">
+          <mat-icon>error</mat-icon>
+          <span>{{ errorMessage }}</span>
+        </div>
+  
+        <button mat-raised-button color="primary" type="submit" class="login-button">
+          Login
+        </button>
+  
+        <p class="signup-text">
+          Don't have an account? <a routerLink="/signup">Sign up</a>
+        </p>
+      </form>
+    </div>
+  </div>

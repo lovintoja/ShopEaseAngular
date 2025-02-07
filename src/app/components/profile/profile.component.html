@@ -1,0 +1,153 @@
+<div class="profile-container">
+  <div class="profile-card">
+    <h2 class="profile-title">My Profile</h2>
+    <p class="profile-subtext">Manage your account information.</p>
+
+    <!-- Error Message -->
+    <div *ngIf="errorMessage" class="error-message">
+      <mat-icon>error</mat-icon>
+      <span>{{ errorMessage }}</span>
+    </div>
+
+    <!-- Username -->
+    <div class="profile-details">
+      <mat-icon class="profile-icon">person</mat-icon>
+      <span class="profile-field">Username:</span>
+      <span class="profile-value">{{ profileData.username }}</span>
+    </div>
+
+    <!-- Email -->
+    <div class="profile-details">
+      <mat-icon class="profile-icon">mail</mat-icon>
+      <span class="profile-field">Email:</span>
+      <span class="profile-value">{{ profileData.email }}</span>
+    </div>
+
+    <!-- Phone Number -->
+    <div class="profile-details">
+      <mat-icon class="profile-icon">phone</mat-icon>
+      <span class="profile-field">Phone Number:</span>
+      <span class="profile-value">{{ profileData.profile.phoneNumber }}</span>
+    </div>
+
+    <!-- Address -->
+    <div class="profile-details">
+      <mat-icon class="profile-icon">home</mat-icon>
+      <span class="profile-field">Address:</span>
+      <span class="profile-value">
+        {{ profileData.profile.address.street }}, {{ profileData.profile.address.city }},
+        {{ profileData.profile.address.postalCode }}, {{ profileData.profile.address.country }}
+      </span>
+    </div>
+
+    <!-- Date of Birth -->
+    <div class="profile-details">
+      <mat-icon class="profile-icon">cake</mat-icon>
+      <span class="profile-field">Date of Birth:</span>
+      <span class="profile-value">{{ profileData.profile.dateOfBirth | date: 'mediumDate' }}</span>
+    </div>
+
+    <!-- Bio -->
+    <div class="profile-details">
+      <mat-icon class="profile-icon">info</mat-icon>
+      <span class="profile-field">Bio:</span>
+      <span class="profile-value">{{ profileData.profile.bio || 'No bio provided' }}</span>
+    </div>
+
+    <!-- Edit Profile Button -->
+    <button mat-raised-button color="primary" class="edit-button" (click)="openEditProfileDialog()">
+      Edit Profile
+    </button>
+  </div>
+
+  <!-- Change Password Section -->
+  <div class="change-password-card">
+    <h2 class="change-password-title">Change Password</h2>
+    <form [formGroup]="changePasswordForm" (ngSubmit)="changePassword()">
+      <mat-form-field appearance="outline">
+        <mat-label>Old Password</mat-label>
+        <input matInput type="password" formControlName="oldPassword" required />
+        <mat-error *ngIf="changePasswordForm.get('oldPassword')?.invalid">
+          <span *ngIf="changePasswordForm.get('oldPassword')?.hasError('required')">Old password is required.</span>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>New Password</mat-label>
+        <input matInput type="password" formControlName="newPassword" required />
+        <mat-error *ngIf="changePasswordForm.get('newPassword')?.invalid">
+          <span *ngIf="changePasswordForm.get('newPassword')?.hasError('required')">New password is required.</span>
+          <span *ngIf="changePasswordForm.get('newPassword')?.hasError('minlength')">Password must be at least 6 characters.</span>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Confirm New Password</mat-label>
+        <input matInput type="password" formControlName="confirmNewPassword" required />
+        <mat-error *ngIf="changePasswordForm.get('confirmNewPassword')?.invalid">
+          <span *ngIf="changePasswordForm.get('confirmNewPassword')?.hasError('required')">Confirm new password is required.</span>
+          <span *ngIf="changePasswordForm.get('confirmNewPassword')?.hasError('passwordMismatch')">Passwords do not match.</span>
+        </mat-error>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" type="submit" [disabled]="changePasswordForm.invalid">
+        Change Password
+      </button>
+    </form>
+  </div>
+
+  <!-- Orders Section -->
+  <div class="orders-section">
+    <h2 class="orders-title">My Orders</h2>
+
+    <mat-accordion>
+      <mat-expansion-panel *ngFor="let order of orders">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Order #{{ order.id }} - {{ order.status }}
+          </mat-panel-title>
+          <mat-panel-description>
+            {{ order.orderDate | date }} - Total: {{ order.totalPrice | currency }}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <!-- Order Details -->
+        <div class="order-details">
+          <div class="order-info">
+            <p><strong>Shipping Address:</strong></p>
+            <p>{{ order.shippingAddress.street }}, {{ order.shippingAddress.city }}</p>
+            <p>{{ order.shippingAddress.postalCode }}, {{ order.shippingAddress.country }}</p>
+          </div>
+
+          <div class="order-info">
+            <p><strong>Payment Info:</strong></p>
+            <p>Method: {{ order.paymentInfo.paymentMethod }}</p>
+            <p>Transaction ID: {{ order.paymentInfo.transactionId }}</p>
+            <p>Date: {{ order.paymentInfo.paymentDate | date }}</p>
+          </div>
+
+          <div class="order-info">
+            <p><strong>Contact Phone:</strong> {{ order.contactPhone }}</p>
+            <p><strong>Note:</strong> {{ order.note || 'No note provided' }}</p>
+          </div>
+
+          <!-- Order Items -->
+          <div class="order-items">
+            <h3>Items</h3>
+            <mat-card *ngFor="let item of order.items" class="order-item">
+              <div class="item-details">
+                <img *ngIf="item.product?.imageUrl" [src]="item.product?.imageUrl" alt="Product Image" class="item-image" />
+                <div class="item-info">
+                  <p class="item-name">{{ item.productName }}</p>
+                  <p class="item-description" *ngIf="item.product?.description">{{ item.product?.description }}</p>
+                  <p class="item-quantity">Quantity: {{ item.quantity }}</p>
+                  <p class="item-price">Price: {{ item.unitPrice | currency }}</p>
+                </div>
+              </div>
+            </mat-card>
+          </div>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+</div>

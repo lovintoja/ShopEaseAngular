@@ -5,17 +5,22 @@ import { Product } from '../../models/product.model';
 import { MatCardModule } from '@angular/material/card';
 import { CommonModule, CurrencyPipe } from '@angular/common';
 import { BasketService } from '../../services/basket.service';
+import { MatButton } from '@angular/material/button';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-product-details',
   templateUrl: './product-details.component.html',
-  imports: [MatCardModule, CurrencyPipe, CommonModule],
+  imports: [MatCardModule, CurrencyPipe, CommonModule, MatButton],
   styleUrls: ['./product-details.component.css']
 })
 export class ProductDetailsComponent implements OnInit {
   product!: Product;
 
-  constructor(private route: ActivatedRoute, private productService: ProductService, private basketService: BasketService) {}
+  constructor(private route: ActivatedRoute, 
+    private productService: ProductService, 
+    private basketService: BasketService,
+    private authService: AuthService) {}
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
@@ -27,7 +32,11 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   addToBasket(): void {
-    alert(`${this.product.title} has been added to the basket!`);
+    alert(`${this.product.name} has been added to the basket!`);
     this.basketService.addToBasket(this.product);
+  }
+
+  isLoggedIn(): boolean {
+    return this.authService.isAuthenticated();
   }
 }

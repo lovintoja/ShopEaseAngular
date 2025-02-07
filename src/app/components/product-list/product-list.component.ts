@@ -4,11 +4,12 @@ import { Product } from '../../models/product.model';
 import { MatCardModule } from '@angular/material/card';
 import { CommonModule, CurrencyPipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { MatButton } from '@angular/material/button';
 
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
-  imports: [MatCardModule, CurrencyPipe, RouterLink, CommonModule],
+  imports: [MatCardModule, CurrencyPipe, RouterLink, CommonModule, MatButton],
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit {

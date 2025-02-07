@@ -1,0 +1,51 @@
+<div class="signup-container">
+    <div class="signup-card">
+      <h2 class="signup-title">Sign Up</h2>
+      <p class="signup-subtext">Create an account to get started.</p>
+  
+      <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" class="signup-form">
+        <mat-form-field appearance="outline">
+          <mat-label>Username</mat-label>
+          <input matInput formControlName="username" type="text" required />
+          <mat-icon matPrefix>person</mat-icon>
+        </mat-form-field>
+  
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" type="email" required />
+          <mat-icon matPrefix>mail</mat-icon>
+        </mat-form-field>
+  
+        <mat-form-field appearance="outline">
+          <mat-label>Password</mat-label>
+          <input matInput formControlName="password" type="password" required />
+          <mat-icon matPrefix>lock</mat-icon>
+        </mat-form-field>
+  
+        <mat-form-field appearance="outline">
+          <mat-label>Confirm Password</mat-label>
+          <input matInput formControlName="confirmPassword" type="password" required />
+          <mat-icon matPrefix>lock</mat-icon>
+        </mat-form-field>
+  
+        <div *ngIf="errorMessage" class="error-message">
+          <mat-icon>error</mat-icon>
+          <span>{{ errorMessage }}</span>
+        </div>
+
+        <div *ngIf="successMessage" class="success-message">
+            <mat-icon>success</mat-icon>
+            <span>{{ successMessage }}</span>
+        </div>
+  
+        <button mat-raised-button color="primary" type="submit" class="signup-button">
+          Sign Up
+        </button>
+  
+        <p class="login-text">
+          Already have an account? <a routerLink="/login">Login</a>
+        </p>
+      </form>
+    </div>
+  </div>
+  

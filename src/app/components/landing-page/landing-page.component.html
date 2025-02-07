@@ -1,37 +1,32 @@
-<div class="index">
-    <section class="hero-section">
-      <div class="hero-content">
-        <h1>Welcome to ShopEase</h1>
-        <p>Your one-stop shop for all your needs. Discover amazing products at unbeatable prices.</p>
-        <button mat-raised-button color="primary" routerLink="/products">Shop Now</button>
-      </div>
-    </section>
-  
-    <section class="features-section">
-      <mat-grid-list cols="3" rowHeight="1:1" gutterSize="16px" class="features-grid">
-        <mat-grid-tile *ngFor="let feature of features">
-          <div class="feature-card">
-            <img [src]="feature.image" alt="{{ feature.title }}" />
-            <h3>{{ feature.title }}</h3>
-            <p>{{ feature.description }}</p>
-          </div>
-        </mat-grid-tile>
-      </mat-grid-list>
-    </section>
-  
-    <section class="customer-service-section">
-      <div class="service-content">
-        <h2>Exceptional Customer Service</h2>
-        <p>
-          Our team is dedicated to providing you with the best shopping experience. If you have
-          any questions or need assistance, we're here to help.
-        </p>
-        <button mat-button color="accent" routerLink="/about">About Us</button>
-      </div>
-    </section>
-  
-    <footer class="footer">
-      <p>&copy; {{ currentYear }} ShopEase. All rights reserved.</p>
-    </footer>
+<section class="hero">
+  <div class="hero-content">
+    <h1>Welcome to Shoe Grab</h1>
+    <p class="hero-subtext">Your one-stop shop for all your needs. Discover amazing products at unbeatable prices.</p>
+    <a mat-raised-button color="primary" routerLink="/products" class="hero-button">Shop Now</a>
   </div>
-  
+</section>
+
+<section class="features">
+  <h2 class="features-title">Why Choose Shoe Grab?</h2>
+  <div class="features-grid">
+    <div class="feature-card">
+      <mat-icon class="feature-icon">local_shipping</mat-icon>
+      <h3>Fast Delivery</h3>
+      <p>Get your products delivered to your doorstep in record time.</p>
+    </div>
+    <div class="feature-card">
+      <mat-icon class="feature-icon">verified_user</mat-icon>
+      <h3>Secure Payments</h3>
+      <p>Shop with confidence using our secure payment gateway.</p>
+    </div>
+    <div class="feature-card">
+      <mat-icon class="feature-icon">support_agent</mat-icon>
+      <h3>24/7 Support</h3>
+      <p>Our team is always here to help you with any questions.</p>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <p>&copy; {{ currentYear }} Shoe Grab. All rights reserved.</p>
+</footer>

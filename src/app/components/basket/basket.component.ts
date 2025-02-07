@@ -7,22 +7,23 @@ import { MatIcon } from '@angular/material/icon';
 import { MatHeaderCell, MatTableModule } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { CheckoutDialogComponent } from '../checkout-dialog/checkout-dialog.component';
-import { MatButton } from '@angular/material/button';
+import { MatButton, MatIconButton } from '@angular/material/button';
+import { BasketItem } from '../../models/basketitem.model';
 
 @Component({
   selector: 'app-basket',
   templateUrl: './basket.component.html',
-  imports: [CurrencyPipe, MatIcon, CommonModule, MatTableModule, MatButton, MatIcon, MatHeaderCell],
+  imports: [CurrencyPipe, MatIcon, CommonModule, MatTableModule, MatButton, MatIcon, MatHeaderCell, MatIconButton],
   styleUrls: ['./basket.component.css']
 })
 export class BasketComponent implements OnInit {
-  basketItems$!: Observable<{ product: Product; quantity: number; }[]>;
+  basketItems$!: Observable<BasketItem[]>;
   displayedColumns: string[] = ['image', 'title', 'price', 'quantity', 'total', 'actions'];
 
   constructor(private basketService: BasketService, private dialog: MatDialog) {}
 
   ngOnInit(): void {
-    this.basketItems$ = this.basketService.getBasket();
+    this.basketItems$ = this.basketService.basket$;
   }
 
   addItem(product: Product): void {
@@ -33,8 +34,8 @@ export class BasketComponent implements OnInit {
     this.basketService.removeFromBasket(productId, quantity);
   }
 
-  calculateTotal(basketItems: { product: Product; quantity: number }[]): number {
-    return basketItems.reduce((total, item) => total + item.product.price * item.quantity, 0);
+  getTotal(): number {
+    return this.basketService.getTotal();
   }
 
   openCheckoutForm() {

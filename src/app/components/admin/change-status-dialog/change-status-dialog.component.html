@@ -1,0 +1,16 @@
+<h2 mat-dialog-title>Change Order Status</h2>
+    <mat-dialog-content>
+      <mat-form-field appearance="outline">
+        <mat-label>New Status</mat-label>
+        <mat-select [(ngModel)]="selectedStatus">
+            <mat-option value="New">New</mat-option>
+            <mat-option value="Accepted">Accepted</mat-option>
+            <mat-option value="Completed">Completed</mat-option>
+            <mat-option value="Cancelled">Cancelled</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+      <button mat-button (click)="onCancel()">Cancel</button>
+      <button mat-button color="primary" (click)="onSave()">Save</button>
+    </mat-dialog-actions>

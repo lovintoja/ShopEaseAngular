@@ -1,52 +1,64 @@
+/* Navbar Container */
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #1976D2;
-  }
+  background-color: var(--primary-color);
+  color: var(--white);
+  padding: 1rem 0;
+  box-shadow: var(--shadow);
+}
 
-  .navbar a {
-    color: white;
-  }
-  
-  .navbar-logo {
-    display: flex;
-    align-items: center;
-    font-size: 24px;
-    font-weight: bold;
-    color: black;
-  }
-  
-  .navbar-logo mat-icon {
-    margin-right: 8px;
-  }
-  
-  .navbar-links {
-    display: flex;
-    gap: 16px;
-  }
-  
-  .basket-link {
-    display: flex;
-    align-items: center;
-    font-weight: bold;
-  }
-  
-  .basket-link mat-icon {
-    margin-left: 4px;
-  }
-  
-  .spacer {
-    flex: 1;
-  }
-  
-  @media (max-width: 768px) {
-    .navbar-links {
-      display: none;
-    }
-  
-    .menu-button {
-      display: block;
-    }
-  }
-  
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Brand Logo */
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.navbar-brand mat-icon {
+  font-size: 2rem;
+}
+
+/* Navigation Links */
+.navbar-links {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: var(--secondary-color);
+}
+
+/* Basket Link */
+.basket-link {
+  position: relative;
+}
+
+.basket-count {
+  background-color: var(--secondary-color);
+  color: var(--white);
+  font-size: 0.8rem;
+  padding: 2px 6px;
+  border-radius: 50%;
+  position: absolute;
+  top: -8px;
+  right: -12px;
+}

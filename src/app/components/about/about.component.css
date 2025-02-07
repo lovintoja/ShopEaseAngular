@@ -3,8 +3,6 @@
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    background: linear-gradient(to bottom, #4caf50, #8BC34A);
-    border-radius: 8px;
   }
   
   .about-header {
@@ -25,7 +23,6 @@
   
   mat-card {
     padding: 1.5rem;
-    border-radius: 8px;
   }
 
   mat-card-title {
@@ -45,7 +42,6 @@
     gap: 2rem;
     padding: 2rem;
     background-color: #f9f9f9;
-    border-radius: 12px;
   }
   
   .team-member {
