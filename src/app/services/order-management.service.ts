@@ -14,7 +14,6 @@ export class OrderManagementService {
   constructor(private http: HttpClient) {}
 
   searchOrders(query: AdminOrderSearchQuery): Observable<AdminOrder[]> {
-    // Create HttpParams object and append query parameters
     let params = new HttpParams();
 
     if (query.userId) {

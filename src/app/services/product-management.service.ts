@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { CreateProductDto } from '../models/productdto.model'; // Define these models
+import { CreateProductDto } from '../models/productdto.model';
 import { ProductService } from './product.service';
 import { Product } from '../models/product.model';
 import { environment } from '../environments/environment';

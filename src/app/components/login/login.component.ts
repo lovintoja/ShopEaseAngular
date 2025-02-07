@@ -37,7 +37,6 @@ export class LoginComponent {
 
     const { email, password } = this.loginForm.value;
 
-    // Call login method from AuthService
     this.authService.login(email, password).subscribe(
       success => {
         if (success){

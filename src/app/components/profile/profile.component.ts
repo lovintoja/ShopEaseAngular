@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../services/auth.service';  // Adjust path to the AuthService
+import { AuthService } from '../../services/auth.service';
 import { CommonModule, CurrencyPipe, DatePipe } from '@angular/common';
-import { MatIcon, MatIconModule } from '@angular/material/icon';
-import { MatButton, MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 import { Order } from '../../models/order.model';
 import { ProductService } from '../../services/product.service';
 import { OrderService } from '../../services/order.service';
@@ -23,11 +23,11 @@ import { MatInputModule } from '@angular/material/input';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  profileData: any;  // To store the profile dataa
+  profileData: any;
   changePasswordForm: FormGroup;
   orders: Order[] = [];
-  isLoading: boolean = true;  // Flag for loading state
-  errorMessage: string | null = null;  // Store any errors
+  isLoading: boolean = true;
+  errorMessage: string | null = null;
 
   constructor(private authService: AuthService, 
     private orderService: OrderService, 
@@ -46,11 +46,10 @@ export class ProfileComponent implements OnInit {
     }
 
   ngOnInit(): void {
-    this.getProfile();  // Call the method when the component is initialized
+    this.getProfile();
     this.loadOrders();
   }
 
-  // Method to fetch the user's profile
   getProfile(): void {
     this.authService.getProfile().subscribe(
       (profileData) => {

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, catchError, map, Observable, of, throwError } from 'rxjs';
-import { environment } from '../environments/environment';  // Modify as needed
+import { environment } from '../environments/environment';
 import { Profile } from '../models/profile.model';
 import { ProfileWithData } from '../models/profile-with-data.model';
 8
@@ -9,7 +9,7 @@ import { ProfileWithData } from '../models/profile-with-data.model';
   providedIn: 'root',
 })
 export class AuthService {
-  private loginUrl = `${environment.apiAuthUrl}/auth/login`;  // Modify as per your API endpoint
+  private loginUrl = `${environment.apiAuthUrl}/auth/login`;
   private profileUrl =  `${environment.apiAuthUrl}/auth/profile`;
   private registerUrl = `${environment.apiAuthUrl}/auth/register`;
   private roleUrl = `${environment.apiAuthUrl}/auth/role`;
@@ -20,7 +20,6 @@ export class AuthService {
 
   constructor(private http: HttpClient) {}
     
-  // Login method
   login(email: string, password: string): Observable<boolean> {
     const body = { email, password };
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -54,7 +53,6 @@ export class AuthService {
     );
   }
 
-  // Error handling method
   private handleError(error: HttpErrorResponse): string {
     switch (error.status) {
       case 400:
@@ -66,24 +64,21 @@ export class AuthService {
     }
   }
 
-  // Optional: To check if the user is logged in (token exists)
   isAuthenticated(): boolean {
     return !!localStorage.getItem('authToken');
   }
 
-  // Optional: Logout (remove token)
   logout(): void {
     localStorage.removeItem('authToken');
     this.loggedInSubject.next(false);
   }
 
-  // Optionally: Get the stored token for future API calls
   getToken(): string | null {
     return localStorage.getItem('authToken');
   }
 
   getProfile(): Observable<ProfileWithData> {
-    return this.http.get<ProfileWithData>(this.profileUrl);  // Send GET request to retrieve the profile
+    return this.http.get<ProfileWithData>(this.profileUrl);
   }
 
   getUserRole(): Observable<string> {

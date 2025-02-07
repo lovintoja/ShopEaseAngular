@@ -49,7 +49,7 @@ export class AdminOrderManagementComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.searchOrders(); // Load all orders initially
+    this.searchOrders();
   }
 
   searchOrders(): void {

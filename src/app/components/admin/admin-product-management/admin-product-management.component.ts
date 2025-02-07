@@ -19,8 +19,8 @@ import { BehaviorSubject } from 'rxjs';
   imports: [CommonModule, CurrencyPipe, FormsModule, ReactiveFormsModule, MatInputModule, MatTableModule, MatIconModule, MatCardModule, MatToolbarModule, MatButtonModule]
 })
 export class ProductManagementComponent implements OnInit {
-  private productsSubject = new BehaviorSubject<Product[]>([]); // Observable stream of products
-  products$ = this.productsSubject.asObservable();  newProductForm: FormGroup;  // Define FormGroup for the form
+  private productsSubject = new BehaviorSubject<Product[]>([]);
+  products$ = this.productsSubject.asObservable();  newProductForm: FormGroup;
   selectedProduct: Product | null = null;
   editProductForm: FormGroup;
 
@@ -30,20 +30,19 @@ export class ProductManagementComponent implements OnInit {
     private fb: FormBuilder,
     private cdr: ChangeDetectorRef
   ) {
-    // Initialize the form
     this.newProductForm = this.fb.group({
-      name: ['', [Validators.required, Validators.minLength(3)]],  // Add validators
-      price: ['', [Validators.required, Validators.min(1)]],  // Add price validators
-      description: ['', [Validators.required, Validators.maxLength(500)]],  // Add description validators
-      imageUrl: ['', [Validators.required, Validators.minLength(1)]],  // Image is required
+      name: ['', [Validators.required, Validators.minLength(3)]],
+      price: ['', [Validators.required, Validators.min(1)]],
+      description: ['', [Validators.required, Validators.maxLength(500)]],
+      imageUrl: ['', [Validators.required, Validators.minLength(1)]],
     });
 
     this.editProductForm = this.fb.group({
       id: [{value: '', disabled: true}, [Validators.required]],
-      name: ['', [Validators.required, Validators.minLength(3)]],  // Add validators
-      price: ['', [Validators.required, Validators.min(1)]],  // Add price validators
-      description: ['', [Validators.required, Validators.maxLength(500)]],  // Add description validators
-      imageUrl: ['', [Validators.required, Validators.minLength(1)]],  // Image is required
+      name: ['', [Validators.required, Validators.minLength(3)]],
+      price: ['', [Validators.required, Validators.min(1)]],
+      description: ['', [Validators.required, Validators.maxLength(500)]], 
+      imageUrl: ['', [Validators.required, Validators.minLength(1)]],
     });
   }
 
@@ -71,7 +70,7 @@ export class ProductManagementComponent implements OnInit {
         const productsAdded = this.productsSubject.value;
         productsAdded.push(product);
         this.productsSubject.next(productsAdded);
-        this.newProductForm.reset();  // Reset form after successful submission
+        this.newProductForm.reset();
       },
       error: (err) => console.error('Failed to add product', err),
     });
@@ -80,8 +79,8 @@ export class ProductManagementComponent implements OnInit {
   updateProduct(): void {
     if (this.editProductForm.valid) {
       const updatedProduct = {
-        ...this.editProductForm.value,  // This will exclude the disabled `id`
-        id: this.selectedProduct?.id,    // Manually add `id` to the form value
+        ...this.editProductForm.value,
+        id: this.selectedProduct?.id,
       };
       this.service.updateProduct(updatedProduct).subscribe({
         next: (product) => {
@@ -91,7 +90,7 @@ export class ProductManagementComponent implements OnInit {
             productsEdited[index] = product;
             this.productsSubject.next(productsEdited)
           }
-          this.selectedProduct = null; // Reset form
+          this.selectedProduct = null;
           this.cdr.detectChanges();
         },
         error: (err) => console.error('Failed to update product', err),
@@ -112,7 +111,6 @@ export class ProductManagementComponent implements OnInit {
   selectProductForEdit(product: Product): void {
     this.selectedProduct = product;
 
-    // Patch values to the form
     if (this.selectedProduct) {
       this.editProductForm.patchValue({
         id: this.selectedProduct.id,

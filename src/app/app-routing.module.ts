@@ -41,8 +41,8 @@ export const appRoutes: Routes = [
   {
     path: 'admin/products',
     component: ProductManagementComponent,
-    canActivate: [AuthGuard], // Ensure only admins can access
-    data: { roles: ['admin'] } // Pass required role
+    canActivate: [AuthGuard],
+    data: { roles: ['admin'] }
   },
   {
     path: 'admin/orders',

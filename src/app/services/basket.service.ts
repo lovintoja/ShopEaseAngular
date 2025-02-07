@@ -24,16 +24,14 @@ export class BasketService {
     if (this.authService.isAuthenticated()) {
       this.loadBasketFromBackend();
     } else {
-      this.basketSubject.next([]); // Empty basket for unauthenticated users
+      this.basketSubject.next([]);
     }
   }
 
   private handleAuthChange(loggedIn: boolean): void {
     if (loggedIn) {
-      // User logged in: load basket from backend
       this.loadBasketFromBackend();
     } else {
-      // User logged out: clear the basket
       this.basketSubject.next([]);
     }
   }
@@ -44,7 +42,7 @@ export class BasketService {
         this.basketSubject.next(response.items || []);
       },
       error: () => {
-        this.basketSubject.next([]); // Fallback to empty basket on error
+        this.basketSubject.next([]);
       },
     });
   }
@@ -54,24 +52,23 @@ export class BasketService {
       const basketMapped: UpdateBasket = { 
         items: basket.map(item => {
         return {
-          id: item.product.id, // Get the product ID
-          quantity: item.quantity, // Get the quantity
+          id: item.product.id,
+          quantity: item.quantity,
         };
       })}
-      
+
         this.http.put(this.basketUrl, basketMapped).subscribe({
         next: () => this.basketSubject.next(basket),
-        error: () => this.basketSubject.next([]), // Fallback to empty basket on error
+        error: () => this.basketSubject.next([]),
       });
     } else {
-      // If not authenticated, clear the basket
       this.basketSubject.next([]);
     }
   }
 
   addToBasket(product: Product, quantity: number = 1): void {
     if (!this.authService.isAuthenticated()) {
-      return; // Do nothing if not authenticated
+      return;
     }
 
     const currentBasket = this.basketSubject.value;
@@ -88,7 +85,7 @@ export class BasketService {
 
   removeFromBasket(productId: number, quantity: number = 1): void {
     if (!this.authService.isAuthenticated()) {
-      return; // Do nothing if not authenticated
+      return;
     }
 
     const currentBasket = this.basketSubject.value;
@@ -110,7 +107,7 @@ export class BasketService {
     if (this.authService.isAuthenticated()) {
       this.http.delete(this.basketUrl).subscribe({
         next: () => this.basketSubject.next([]),
-        error: () => this.basketSubject.next([]), // Fallback to empty basket on error
+        error: () => this.basketSubject.next([]),
       });
     } else {
       this.basketSubject.next([]);
