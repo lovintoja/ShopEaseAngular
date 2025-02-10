@@ -62,12 +62,12 @@ export class AdminOrderManagementComponent implements OnInit {
 
   openStatusDialog(order: AdminOrder): void {
     const dialogRef = this.dialog.open(ChangeStatusDialogComponent, {
-      data: { currentStatus: order.order.status },
+      data: { currentStatus: order.status },
     });
 
     dialogRef.afterClosed().subscribe((newStatus: string) => {
       if (newStatus) {
-        this.updateOrderStatus(order.order.id, newStatus);
+        this.updateOrderStatus(order.id, newStatus);
       }
     });
   }

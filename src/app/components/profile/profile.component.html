@@ -60,42 +60,6 @@
     </button>
   </div>
 
-  <!-- Change Password Section -->
-  <div class="change-password-card">
-    <h2 class="change-password-title">Change Password</h2>
-    <form [formGroup]="changePasswordForm" (ngSubmit)="changePassword()">
-      <mat-form-field appearance="outline">
-        <mat-label>Old Password</mat-label>
-        <input matInput type="password" formControlName="oldPassword" required />
-        <mat-error *ngIf="changePasswordForm.get('oldPassword')?.invalid">
-          <span *ngIf="changePasswordForm.get('oldPassword')?.hasError('required')">Old password is required.</span>
-        </mat-error>
-      </mat-form-field>
-
-      <mat-form-field appearance="outline">
-        <mat-label>New Password</mat-label>
-        <input matInput type="password" formControlName="newPassword" required />
-        <mat-error *ngIf="changePasswordForm.get('newPassword')?.invalid">
-          <span *ngIf="changePasswordForm.get('newPassword')?.hasError('required')">New password is required.</span>
-          <span *ngIf="changePasswordForm.get('newPassword')?.hasError('minlength')">Password must be at least 6 characters.</span>
-        </mat-error>
-      </mat-form-field>
-
-      <mat-form-field appearance="outline">
-        <mat-label>Confirm New Password</mat-label>
-        <input matInput type="password" formControlName="confirmNewPassword" required />
-        <mat-error *ngIf="changePasswordForm.get('confirmNewPassword')?.invalid">
-          <span *ngIf="changePasswordForm.get('confirmNewPassword')?.hasError('required')">Confirm new password is required.</span>
-          <span *ngIf="changePasswordForm.get('confirmNewPassword')?.hasError('passwordMismatch')">Passwords do not match.</span>
-        </mat-error>
-      </mat-form-field>
-
-      <button mat-raised-button color="primary" type="submit" [disabled]="changePasswordForm.invalid">
-        Change Password
-      </button>
-    </form>
-  </div>
-
   <!-- Orders Section -->
   <div class="orders-section">
     <h2 class="orders-title">My Orders</h2>
@@ -149,5 +113,41 @@
         </div>
       </mat-expansion-panel>
     </mat-accordion>
+  </div>
+  
+  <!-- Change Password Section -->
+  <div class="change-password-card">
+    <h2 class="change-password-title">Change Password</h2>
+    <form [formGroup]="changePasswordForm" (ngSubmit)="changePassword()">
+      <mat-form-field appearance="outline">
+        <mat-label>Old Password</mat-label>
+        <input matInput type="password" formControlName="oldPassword" required />
+        <mat-error *ngIf="changePasswordForm.get('oldPassword')?.invalid">
+          <span *ngIf="changePasswordForm.get('oldPassword')?.hasError('required')">Old password is required.</span>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>New Password</mat-label>
+        <input matInput type="password" formControlName="newPassword" required />
+        <mat-error *ngIf="changePasswordForm.get('newPassword')?.invalid">
+          <span *ngIf="changePasswordForm.get('newPassword')?.hasError('required')">New password is required.</span>
+          <span *ngIf="changePasswordForm.get('newPassword')?.hasError('minlength')">Password must be at least 6 characters.</span>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Confirm New Password</mat-label>
+        <input matInput type="password" formControlName="confirmNewPassword" required />
+        <mat-error *ngIf="changePasswordForm.get('confirmNewPassword')?.invalid">
+          <span *ngIf="changePasswordForm.get('confirmNewPassword')?.hasError('required')">Confirm new password is required.</span>
+          <span *ngIf="changePasswordForm.get('confirmNewPassword')?.hasError('passwordMismatch')">Passwords do not match.</span>
+        </mat-error>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" type="submit" [disabled]="changePasswordForm.invalid">
+        Change Password
+      </button>
+    </form>
   </div>
 </div>

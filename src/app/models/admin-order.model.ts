@@ -1,7 +1,13 @@
-import { Order } from "./order.model";
+import { Address, Order, OrderItem, PaymentInfo } from "./order.model";
 
 export interface AdminOrder {
-    order: Order,
-    userId: number,
-    username: string
+    id: number;
+    orderDate: Date;
+    status: string;
+    totalPrice: number;
+    shippingAddress: Address;
+    paymentInfo: PaymentInfo;
+    contactPhone: string;
+    note?: string;
+    items: OrderItem[];
   }
