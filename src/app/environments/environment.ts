@@ -1,10 +1,14 @@
+export const environmentBase = {
+  url: 'http://192.168.0.23:8080/api/'
+}
+
 export const environment = {
     production: false,
-    apiAuthUrl: 'http://localhost:10002/api',
-    apiBasketUrl: 'http://localhost:10022/api/basket',
-    apiProductManagementUrl: 'http://localhost:10042/api/admin/products',
-    apiProductUrl: 'http://localhost:10022/api/products',
-    apiOrderUrl: 'http://localhost:10012/api/order',
-    apiOrderManagement: 'http://localhost:10042/api/admin/order'
+    apiAuthUrl: environmentBase.url,
+    apiBasketUrl: environmentBase.url + 'basket',
+    apiProductManagementUrl: environmentBase.url + 'admin/products',
+    apiProductUrl: environmentBase.url + 'products',
+    apiOrderUrl: environmentBase.url + 'order',
+    apiOrderManagement: environmentBase.url + 'admin/order'
   };
   
